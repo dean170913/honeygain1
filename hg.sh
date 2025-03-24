@@ -109,7 +109,7 @@ container_build(){
   # 创建容器
   yellow " Create the honeygain container.\n "
   docker pull honeygain/honeygain
-  docker run -d --name "$NAME" --restart=always honeygain/honeygain -tou-accept -email "$EMAIL" -pass "$PASSWORD" -device honeygainnode
+  docker run -d --name "$NAME" --restart=always honeygain/honeygain -tou-accept -email "$EMAIL" -pass "$PASSWORD" -device centos8
   
   # 创建 Towerwatch
   [[ ! $(docker ps -a) =~ watchtower ]] && yellow " Create TowerWatch.\n " && docker run -d --name watchtower --restart always -p 2095:8080 -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --cleanup >/dev/null 2>&1
